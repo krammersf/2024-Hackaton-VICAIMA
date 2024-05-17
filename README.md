@@ -1,5 +1,5 @@
 
-# Hackaton Vicaima
+# Hackathon Vicaima
 
 ## Objective
 
