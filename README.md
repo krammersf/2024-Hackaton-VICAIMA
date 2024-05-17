@@ -3,7 +3,7 @@
 
 ## Objective
 
-Digitization of the evaluation process for the Vicaima universe
+Digitization of the evaluation process for the [Vicaima](https://www.vicaima.com/pt) universe.
 
 ## Event Details
 
