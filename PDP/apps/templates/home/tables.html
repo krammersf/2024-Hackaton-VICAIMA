@@ -1,0 +1,85 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Avaliações {% endblock title %}
+
+{% block content %}
+
+
+
+
+
+  <div class="header bg-primary pb-6" style="background-color: #660708 !important; border-color: #660708 !important;">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Tables</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tables</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="col-lg-6 col-5 text-right">
+            {% if user.is_superuser %}
+            <a href="/tables/create_events/" class="btn btn-sm btn-neutral">Novo</a>
+            {% endif %}
+            <a href="#" class="btn btn-sm btn-neutral">Filtrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card shadow" style="background-color: white; width: 97.82%;">
+          <div class="card-header bg-transparent">
+            <h3 class="mb-0">Avaliações</h3>
+            </div>
+            <main class="table">
+              <section class="table__header">
+              </section>
+              <section class="table__body">
+                <table>
+                  <thead>
+                    <tr>
+                      <th> Id. Evento </th>
+                      <th> Avaliador </th>
+                      <th> Avaliado </th>
+                      <th> Estado do Evento </th>
+                      <th> Início do Evento </th>
+                      <th> Fim do Evento </th>
+                      <th>Avaliação</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for model in info %}
+                    {% if not model.status_event == "Fechado" or user.is_superuser %}
+                    <tr>
+                      <td>{{ model.id_event }}</td>
+                      <td>{{ model.evaluator_event }}</td>
+                      <td>{{ model.evaluated_event }}</td>
+                      <td>{{ model.status_event }}</td>
+                      <td>{{ model.start_event }}</td>
+                      <td>{{ model.end_event }}</td>
+                      <td><a href="{% url 'evaluation_detail' model.sheet.id %}"><i class="ni ni-single-copy-04 text-dark"></i></a></td>
+                    {% endif %}
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </section>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

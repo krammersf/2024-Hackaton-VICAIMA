@@ -1,0 +1,365 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Ficha {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+<!-- Place the script just before the closing body tag -->
+<script>
+  function calculateSum() {
+      var sum = 0;
+      var dropdowns = document.getElementsByClassName('Avaliacao');
+      for (var i = 0; i < dropdowns.length; i++) {
+          sum += Number(dropdowns[i].value);
+      }
+      document.getElementById('result').innerHTML = "The sum is: " + sum;
+  }
+  </script>
+
+
+{% block content %}
+
+<!-- Header -->
+<div class="header bg-primary pb-6" style="background-color: #660708 !important; border-color: #660708 !important;">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">Ficha de Avaliação</h6>
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item"><a href="/tables/">Avaliação</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Ficha</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="col-lg-6 col-5 text-right">
+          <button class="btn btn-secondary">VER OUTRAS AVALIALIÇÕES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <!-- Banner -->
+
+	<div class="container-fluid mt--7">
+		<div class="row">
+		  <div class="col">
+			<div class="card shadow">
+			  <div class="card-header bg-transparent">
+				<h3 class="mb-0">Icons</h3>
+			  </div>
+			  <div class="card-body">
+                 <div class="banner">
+                   FICHA AVALIAÇÃO  -  Dados Colaborador
+                </div>
+    <!-- Page content -->
+                 <div style="display: flex; flex-direction: column; margin-bottom: 20px;">
+                   <p style="margin-bottom: 5px;">Nome:{{ colab.Nome }}</p>
+                   <p style="margin-bottom: 5px;">Apelido: {{ apelido }}</p>
+                   <p style="margin-bottom: 5px;">Data de Admissão: {{ data_admissao }}</p>
+                   <p style="margin-bottom: 5px;">Número Colaborador: {{ numero_colaborador }}</p>
+                   <p style="margin-bottom: 5px;">Categoria: {{ categoria }}</p>
+                   <p style="margin-bottom: 5px;">Departamento: {{ departamento }}</p>
+                   <p style="margin-bottom: 5px;">Avaliador: {{ avaliador }}</p>
+                   <p style="margin-bottom: 5px;">Direção: {{ direcao }}</p>
+                  </div>
+     <!-- Banner -->
+                  <div class="banner">
+                    ENTREVISTA DE AVALIAÇÃO DE DESEMPENHO
+                  </div>
+                  <div class="banner" style="margin-bottom: 30px;">
+                    <p>PERÍODO de REFERÊNCIA: 
+                    <input type="date" id="data_inicio" name="data_inicio" value="{{ data_inicio }}" style="color: gray;">  
+             a 
+          <input type="date" id="data_inicio" name="data_inicio" value="{{ data_inicio }}" style="color: gray;">  
+      </p>
+    </div>
+
+  <table style="width:100%; text-align:center;">
+    <tr>
+      <td><strong><p style="width: 150px; text-align: center;">Critério</p></strong></td>
+      <td><strong><p style="width: 400px; text-align: center;">Definição</p></strong></td>
+      <td><strong><p style="width: 100px; text-align: center;">Objeto</p></strong></td>
+      <td><strong><p style="width: 100px; text-align: center;">Avaliação</p></strong></td>
+      <td><strong><p style="width: 450px; text-align: center;">Comentários</p></strong></td>
+    </tr>
+    <tr>
+        <td  rowspan="2"><p style="width: 150px; text-align: justify;">&nbsp;&nbsp;Assiduidade</p></td>
+        <td  rowspan="2"><p style="width: 400px; text-align: justify;">Avalia a presença efetiva no posto de 
+             trabalho e o respeito pelos horários 
+             estabelecidos.</p>
+      </td>
+      <td>
+          <p style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Faltas Justificadas<br>
+             3 – zero faltas justificadas<br>
+             1 – Até dez faltas justificadas<br>
+             0 – onze ou mais faltas justificada</p>
+      </td>
+      <td>
+        <select class="Avaliacao" style="color: gray;" onchange="calculateSum()">
+              <option value="3">3</option>
+              <option value="1">1</option>
+              <option value="0">0</option>
+          </select>
+      </td>
+      
+
+      <td  rowspan="2"><textarea id="aa" name="aa" rows="8" cols="50" style="color: gray;"></textarea>
+    </td>
+    </tr>
+    <tr>
+        <td>
+          <p style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Faltas Inustificadas<br>
+             3 – zero faltas justificadas<br>
+             1 – Até dez faltas justificadas<br>
+             0 – onze ou mais faltas justificada</p>
+      </td>
+      <td>
+        <select class="Avaliacao" style="color: gray;" onchange="calculateSum()">
+            <option value="3">3</option>
+            <option value="1">1</option>
+            <option value="0">0</option>
+        </select>
+    </td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+      <td  rowspan="2"><p style="width: 150px; text-align: justify;">&nbsp;&nbsp;Responsabilidade 
+        e &nbsp;&nbsp;Disciplina</p></td>
+        <td  rowspan="2"><p style="width: 400px; text-align: justify;">Observa sistematicamente os 
+          regulamentos e regras da Vicaima, 
+          nomeadamente no âmbito da higiene e 
+          segurança no trabalho, organização e 
+          limpeza; assim como revela capacidade 
+          de utilizar as ferramentas de que 
+          dispõe de forma a não haver 
+          desperdícios de material</p>
+      </td>
+        <td>       
+          <p style="text-align: left;">
+             3 – excelente<br>
+             2 – mediano<br>
+             1 – insatisfatório</p>
+      </td>
+        <td>        
+          <select class="Avaliacao" style="color: gray;">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+         </select></td>
+         <td  rowspan="2"><textarea id="aa" name="aa" rows="3" cols="50" style="color: gray;"></textarea></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+      <td  rowspan="2"><p style="width: 150px; text-align: justify;">&nbsp;&nbsp;Disponibilidade</p></td>
+        <td  rowspan="2"><p style="width: 400px; text-align: justify;">Demonstra disponibilidade para 
+          aceitar trabalho suplementar assim 
+          como iniciativa na resolução de 
+          problemas não previstos.</p>
+      </td>
+        <td>       
+          <p style="text-align: left;">
+             3 – excelente<br>
+             2 – mediano<br>
+             1 – insatisfatório</p>
+      </td>
+        <td>        
+          <select class="Avaliacao" style="color: gray;">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+         </select></td>
+         <td  rowspan="2"><textarea id="aa" name="aa" rows="3" cols="50" style="color: gray;"></textarea></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td  rowspan="2"><p style="width: 150px; text-align: justify;">&nbsp;Conhecimento e &nbsp;&nbsp;Expertise</p></td>
+        <td  rowspan="2"><p style="width: 400px; text-align: justify;">Capacidade para aplicar os 
+          conhecimentos e técnicas de trabalho 
+          essenciais para o desempenho das 
+          suas tarefas, assim como a 
+          preocupação de se manter atualizado e 
+          procurar oportunidades de 
+          desenvolvimento profissional.</p>
+      </td>
+        <td>       
+          <p style="text-align: left;">
+             4 – muito eficaz<br>
+             3 – eficaz<br>
+             2 – mediano<br>
+             1 – insatisfatório</p>
+      </td>
+        <td>        
+          <select class="Avaliacao" style="color: gray;">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+         </select></td>
+         <td  rowspan="2"><textarea id="aa" name="aa" rows="3" cols="50" style="color: gray;"></textarea></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td  rowspan="2"><p style="width: 150px; text-align: justify;">&nbsp;&nbsp;Produtividade</p></td>
+        <td  rowspan="2"><p style="width: 400px; text-align: justify;">Apresenta volume e qualidade de 
+          trabalho num intervalo de tempo 
+          satisfatório.</p>
+      </td>
+        <td>       
+          <p style="text-align: left;">
+             4 – muito eficaz<br>
+             3 – eficaz<br>
+             2 – mediano<br>
+             1 – insatisfatório</p>
+      </td>
+        <td>        
+          <select class="Avaliacao" style="color: gray;">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+         </select></td>
+         <td  rowspan="2"><textarea id="aa" name="aa" rows="3" cols="50" style="color: gray;"></textarea></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>  
+  </table>
+
+
+    <table style="width:100%; text-align:center;">
+      <tr>
+          <td style="width: 80px; text-align: right;">
+            RESULTADOS E PONTUAÇÃO
+          </td>
+          <td style="width: 10px; text-align: left;">
+            <p id="result">The sum is: </p>
+          </td>
+          <td style="width: 20px; text-align: left;">
+            pontos
+          </td>
+      </tr>
+    </table>
+
+      <!-- Banner -->
+      <style>
+        .inline-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+
+  </div>
+  <div class="banner" style="margin-bottom: 30px;">
+  </div>
+
+  <table style="width:1200px; text-align:center;">
+    <tr>
+      <td>
+        Classificação do colaborador
+      </td>
+    </tr>
+    <tr>
+      <td>    
+        <p style="color:gray;">
+          A: Excelente &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;17 a 20 Pontos<br>
+          B: Muito satisfatório &nbsp;&nbsp;14 a 16 Pontos <br>
+          C: Satisfatório  &nbsp;&nbsp;&nbsp;&nbsp;10 a 13 Pontos <br>
+          D: Insatisfatório &nbsp;&nbsp;&nbsp;&nbsp;4 a 9 Ponto
+        </p>
+      </td>
+      <td style="width:20px; text-align:left;">
+        B
+      </td>
+    </tr>
+  </table>
+          
+
+  <table style="margin-left: 0px;">
+    <tr>
+      <td>
+        Comentarios&nbsp;&nbsp;
+      </td>
+      <td>
+        <textarea id="aa" name="aa" style="width: 350%; height: 5em; color: gray;"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Data&nbsp;&nbsp;
+      </td>
+      <td>
+        <input type="date" id="date" name="date" style="width: 150px; color: gray;">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        PIN Colaborador&nbsp;&nbsp;
+      </td>
+      <td>
+        <input type="password" id="pin_colaborador" name="pin_colaborador" minlength="4" maxlength="4" style="width: 150px;">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        PIN Avaliador&nbsp;&nbsp;
+      </td>
+      <td>
+        <input type="password" id="pin_avaliador" name="pin_avaliador" minlength="4" maxlength="4" style="width: 150px;">
+      </td>
+    </tr>
+  </table>
+  
+  <div class="banner" style="margin-bottom: 30px;"></div>
+
+  <table style="margin-left: 20%;">
+    <!-- ...resto do código... -->
+  </table>
+  
+  <button type="submit" style="margin-left: 20%;">Submeter</button>
+
+  <div class="banner" style="margin-bottom: 30px;"></div>
+</div>
+</div>
+</div>
+</div>
+      {% include "includes/footer.html" %}
+
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+  <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+{% endblock javascripts %}

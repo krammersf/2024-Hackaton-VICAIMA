@@ -1,0 +1,96 @@
+
+.banner {
+    background-color: #f8f9fa; /* Change this to your preferred color */
+    text-align: center; /* This centers the text horizontally */
+    padding: 30px;
+    font-size: 1em; /* Increase this value to increase the font size */
+    font-weight: bold;
+    display: flex; /* These three lines center the text and image vertically and horizontally */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* This stacks the text and image vertically */
+}
+
+.evalPage
+{
+    display: block;
+    border-style: solid;
+    border-color: black;
+}
+
+.evalLogo
+{
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.divider
+{
+    position: relative;
+    text-align: center;
+    width: fit-content;
+    width: 100%;
+    background-color: rgb(211, 211, 211);
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: black;
+    color: black;
+}
+
+.miniDivider
+{
+    position: relative;
+    text-align: center;
+    width: fit-content;
+    width: 100%;
+    height: 10px;
+    background-color: white;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: black;
+    color: black;
+}
+
+.tableBlock
+{
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    color: black;
+}
+
+.textBlock
+{
+    position: relative;
+    display: block;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.colabInfo
+{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 100px 100px;
+}
+
+
+.evalContent
+{
+    display: grid;
+    grid-template-columns: 20% 25% 25% 10% 20%;
+    grid-template-rows: 50px 250px 210px 210px 210px 210px;
+}

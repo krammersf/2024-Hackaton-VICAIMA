@@ -1,0 +1,316 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Página de Avaliação {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6" style="background-color: #660708 !important; border-color: #660708 !important;">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Página de Avaliação</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="/tables/">Tables</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Página de Avaliação</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="/static/assets/css/naturdor.css">
+    <!-- Page content -->
+
+    <div class="container-fluid mt--7">
+      <div class="row">
+		    <div class="col">
+		      <div class="card shadow">
+			      <div class="card-header bg-transparent">
+			        <h3 class="mb-0">Avaliação:</h3>
+			      </div>
+
+            <!-- Evaluation Sheet -->
+
+			      <div class="card-body">
+              <form action="post">
+                <div class="evalPage">
+                  <img class="evalLogo" src="/static/assets/img/brand/vicaima_logo.png" alt="">
+                  <div class="divider">
+                    Vicaima Indústria
+                  </div>
+                  <div class="colabInfo">
+                    <div class="tableBlock">
+                      <strong class="textBlock">Nome:</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.evaluated.Nome }} {{ event.sheet.evaluated.Apelido }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock">Data de Admissão:</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.evaluated.Data }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock"><strong>N Colaborador: </strong>{{ event.sheet.evaluated.NumColab }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock">Categoria:</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.evaluated.Func }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock">Departamento:</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.evaluated.Departamento }}</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 50px 50px;">
+                      <div class="tableBlock">
+                        <span class="textBlock"><strong>Avaliador: </strong>{{ event.sheet.evaluator.Nome }} {{ event.sheet.evaluator.Apelido }}</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock"><strong>Direção: </strong>{{ event.sheet.evaluator.DirUni }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divider">
+                    &nbsp;
+                  </div>
+                  <div class="evalContent">
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Critério</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Definição</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Objeto</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Avaliação</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Comentários</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Assiduidade</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Avalia a presença efetiva no posto de
+                        trabalho e o respeito pelos horários
+                        estabelecidos.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 125px 125px;">
+                      <div class="tableBlock">
+                        <span class="textBlock"><strong style="text-decoration: underline ;">Falta Justificada:</strong><br>3 - zero faltas injustificadas<br>1 - Até dez faltas justificadas<br>0 - três ou mais faltas justificadas</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock"><strong style="text-decoration: underline ;">Falta Justificada:</strong><br>3 - zero faltas injustificadas<br>1 - Até dez faltas justificadas<br>0 - três ou mais faltas justificadas</span>
+                      </div>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 125px 125px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">3</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.falta_comment }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Responsabilidade e Disciplina</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Observa sistematicamente os
+                        regulamentos e regras da Vicaima,
+                        nomeadamente no âmbito da higiene e
+                        segurança no trabalho, organização e
+                        limpeza; assim como revela capacidade
+                        de utilizar as ferramentas de que
+                        dispõe de forma a não haver
+                        desperdícios de material.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 70px 70px 70px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3 - Excelente</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">2 - Mediano</span>
+                      </div><div class="tableBlock">
+                        <span class="textBlock">1 - Insatisfatório</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">
+                        {{ event.sheet.respo }}
+                      </span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.respo_comment }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Disponibilidade</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Demonstra disponibilidade para
+                        aceitar trabalho suplementar assim
+                        como iniciativa na resolução de
+                        problemas não previstos.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 70px 70px 70px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3 - Excelente</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">2 - Mediano</span>
+                      </div><div class="tableBlock">
+                        <span class="textBlock">1 - Insatisfatório</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">
+                        {{ event.sheet.dispo }}
+                      </span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.dispo_comment }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Conhecimento e Expertise</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Capacidade para aplicar os
+                        conhecimentos e técnicas de trabalho
+                        essenciais para o desempenho das
+                        suas tarefas, assim como a
+                        preocupação de se manter atualizado e
+                        procurar oportunidades de
+                        desenvolvimento profissional.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 70px 70px 70px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3 - Excelente</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">2 - Mediano</span>
+                      </div><div class="tableBlock">
+                        <span class="textBlock">1 - Insatisfatório</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">
+                        {{ event.sheet.expert }}
+                      </span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.expert_comment }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Produtividade</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Apresenta volume e qualidade de
+                        trabalho num intervalo de tempo
+                        satisfatório.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 70px 70px 70px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3 - Excelente</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">2 - Mediano</span>
+                      </div><div class="tableBlock">
+                        <span class="textBlock">1 - Insatisfatório</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">
+                        {{ event.sheet.produ }}
+                      </span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.produ_comment }}</span>
+                    </div>
+                  </div>
+                  <div class="miniDivider">
+                    &nbsp;
+                  </div>
+                  <div class="divider" style="height: 40px;display: grid; grid-template-columns: 70% 10% 20%;">
+                    <div class="tableBlock">
+                      <span class="textBlock">Resultado / Pontuação</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ total }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Pontos</span>
+                    </div>
+                  </div>
+                  <div class="miniDivider">
+                    &nbsp;
+                  </div>
+                  <div class="divider">Classificação do Colaborador</div>
+                    <div style="display: grid; grid-template-columns: 80% 20%;">
+                      <div class="tableBlock" style="display: grid; grid-template-columns: 50% 50%;">
+                        <div class="textBlock" style="text-align: left;">
+                          <div style=" width: fit-content; justify-self: end; position: relative; left: 100%; transform: translateX(-105%);">
+                            <span><b>A:</b> Excelente<br><b>B:</b> Muito Satisfatório<br><b>C:</b> Satisfatório<br><b>D:</b> Insatisfatório</span>
+                          </div>
+                         </div>
+                        <span class="textBlock" style="text-align: left;">17 a 20 Pontos<br>14 a 16 Pontos<br>10 a 13 Pontos<br>4 a 9 Pontos</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">
+                            {% if total >= 17 %}
+                            A
+                            {% elif total >= 14 %}
+                            B
+                            {% elif total >= 10 %}
+                            C
+                            {% else %}
+                            D
+                            {% endif %}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="divider">
+                      &nbsp;
+                    </div>
+                    <div class="tableBlock" style="height: 50px;">
+                      <strong class="textBlock" style="text-decoration: underline;">Comentários Finais:</strong>
+                    </div>
+                    <div class="tableBlock" style="height: 210px;">
+                      <span class="textBlock">{{ event.sheet.geral_comment }}</span>
+                    </div>
+                  </div>
+                </form>
+              </div>
+		  </div>
+        </div>
+	  </div>
+      {% include "includes/footer.html" %}
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+  <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+{% endblock javascripts %}

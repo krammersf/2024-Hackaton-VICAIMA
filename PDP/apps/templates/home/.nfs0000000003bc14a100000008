@@ -1,0 +1,103 @@
+{% extends 'layouts/base.html' %}
+{% block title %} Dashboard {% endblock title %}
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+{% block content %}
+    <!-- Header -->
+    <div class="header bg-primary pb-6" style="background-color: #660708 !important; border-color: #660708 !important;">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Home</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6 " style="display:flex; justify-content: center; padding-top:8em">
+      <div class="row">
+        <div class="card mb-3" style="margin-inline:10em">
+          <div class="card-body p-3">
+            <div class="chart">
+              <h3 class="mb-0">Análise de Eventos</h3>
+                <div class="chart-container"></div>
+                  <canvas id="myChart" width="270" height="270"></canvas>
+                  <script src="script.js"></script>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Avaliações</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="/tables/" class="btn btn-sm btn-primary">Ver todos</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Evento</th>
+                    <th scope="col">Avaliadores</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for event in table %}
+                  <tr>
+                    <th scope="row">
+                      {{event.id_event}}
+                    </th>
+                    <td>
+                      [{{event.evaluator_event.NumColab}}] {{event.evaluator_event.Nome}} {{event.evaluator_event.Apelido}}
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        {% if event.status_event == "Fechado" %}
+                        <span class="mr-2">100%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                          </div>
+                        </div>
+                        {% else %}
+                        <span class="mr-2">0%</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="width: 0%;"></div>
+                          </div>
+                        </div>
+                        {% endif %}
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% include "includes/footer.html" %}
+    </div>
+{% endblock content %}
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+  <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+{% endblock javascripts %}

@@ -1,0 +1,373 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Página de Avaliação {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6" style="background-color: #660708 !important; border-color: #660708 !important;">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Página de Avaliação</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="/tables/">Tables</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Página de Avaliação</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="/static/assets/css/naturdor.css">
+    <!-- Page content -->
+
+    <div class="container-fluid mt--7">
+      <div class="row">
+		    <div class="col">
+		      <div class="card shadow">
+			      <div class="card-header bg-transparent">
+			        <h3 class="mb-0">Avaliação:</h3>
+			      </div>
+
+            <!-- Evaluation Sheet -->
+
+			      <div class="card-body">
+              <form action="{% url 'evaluation_detail' event.id_event %}" method="post">
+                {% csrf_token %}
+                <div class="evalPage">
+                  <img class="evalLogo" src="/static/assets/img/brand/vicaima_logo.png" alt="">
+                  <div class="divider">
+                    Vicaima Indústria
+                  </div>
+                  <div class="colabInfo">
+                    <div class="tableBlock">
+                      <strong class="textBlock">Nome:</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.evaluated.Nome }} {{ event.sheet.evaluated.Apelido }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock">Data de Admissão:</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.evaluated.Data }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock"><strong>N Colaborador: </strong>{{ event.sheet.evaluated.NumColab }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock">Categoria:</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.evaluated.Func }}</span>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock">Departamento:</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">{{ event.sheet.evaluated.Departamento }}</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 50px 50px;">
+                      <div class="tableBlock">
+                        <span class="textBlock"><strong>Avaliador: </strong>{{ event.sheet.evaluator.Nome }} {{ event.sheet.evaluator.Apelido }}</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock"><strong>Direção: </strong>{{ event.sheet.evaluator.DirUni }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divider">
+                    &nbsp;
+                  </div>
+                  <div class="evalContent">
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Critério</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Definição</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Objeto</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Avaliação</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <strong class="textBlock" style="text-decoration: underline;">Comentários</strong>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Assiduidade</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Avalia a presença efetiva no posto de
+                        trabalho e o respeito pelos horários
+                        estabelecidos.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 125px 125px;">
+                      <div class="tableBlock">
+                        <span class="textBlock"><strong style="text-decoration: underline ;">Falta Justificada:</strong><br>3 - zero faltas injustificadas<br>1 - Até dez faltas justificadas<br>0 - três ou mais faltas justificadas</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock"><strong style="text-decoration: underline ;">Falta Justificada:</strong><br>3 - zero faltas injustificadas<br>1 - Até dez faltas justificadas<br>0 - três ou mais faltas justificadas</span>
+                      </div>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 125px 125px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">3</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock"><textarea name="falta_comment" id="" maxlength="100" style="width: 99%; height: 245px; max-height: 245px; min-height: 245px; border-style: none;" placeholder="Máximo de 100 caracteres"></textarea></span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Responsabilidade e Disciplina</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Observa sistematicamente os
+                        regulamentos e regras da Vicaima,
+                        nomeadamente no âmbito da higiene e
+                        segurança no trabalho, organização e
+                        limpeza; assim como revela capacidade
+                        de utilizar as ferramentas de que
+                        dispõe de forma a não haver
+                        desperdícios de material.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 70px 70px 70px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3 - Excelente</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">2 - Mediano</span>
+                      </div><div class="tableBlock">
+                        <span class="textBlock">1 - Insatisfatório</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">
+                        <select name="respo" id="">
+                          <option value="3">3</option>
+                          <option value="2">2</option>
+                          <option value="1">1</option>
+                        </select>
+                      </span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock"><textarea name="respo_comment" id="" maxlength="100" style="width: 99%; height: 200px; max-height: 200px; min-height: 200px; border-style: none;" placeholder="Máximo de 100 caracteres"></textarea></span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Disponibilidade</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Demonstra disponibilidade para
+                        aceitar trabalho suplementar assim
+                        como iniciativa na resolução de
+                        problemas não previstos.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 70px 70px 70px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3 - Excelente</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">2 - Mediano</span>
+                      </div><div class="tableBlock">
+                        <span class="textBlock">1 - Insatisfatório</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">
+                        <select name="dispo" id="">
+                          <option value="3">3</option>
+                          <option value="2">2</option>
+                          <option value="1">1</option>
+                        </select>
+                      </span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock"><textarea name="dispo_comment" id="" maxlength="100" style="width: 99%; height: 200px; max-height: 200px; min-height: 200px; border-style: none;" placeholder="Máximo de 100 caracteres"></textarea></span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Conhecimento e Expertise</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Capacidade para aplicar os
+                        conhecimentos e técnicas de trabalho
+                        essenciais para o desempenho das
+                        suas tarefas, assim como a
+                        preocupação de se manter atualizado e
+                        procurar oportunidades de
+                        desenvolvimento profissional.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 70px 70px 70px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3 - Excelente</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">2 - Mediano</span>
+                      </div><div class="tableBlock">
+                        <span class="textBlock">1 - Insatisfatório</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">
+                        <select name="expert" id="">
+                          <option value="3">3</option>
+                          <option value="2">2</option>
+                          <option value="1">1</option>
+                        </select>
+                      </span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock"><textarea name="expert_comment" id="" maxlength="100" style="width: 99%; height: 200px; max-height: 200px; min-height: 200px; border-style: none;" placeholder="Máximo de 100 caracteres"></textarea></span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Produtividade</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Apresenta volume e qualidade de
+                        trabalho num intervalo de tempo
+                        satisfatório.</span>
+                    </div>
+                    <div style="display: grid; grid-template-rows: 70px 70px 70px;">
+                      <div class="tableBlock">
+                        <span class="textBlock">3 - Excelente</span>
+                      </div>
+                      <div class="tableBlock">
+                        <span class="textBlock">2 - Mediano</span>
+                      </div><div class="tableBlock">
+                        <span class="textBlock">1 - Insatisfatório</span>
+                      </div>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">
+                        <select name="produ" id="">
+                          <option value="3">3</option>
+                          <option value="2">2</option>
+                          <option value="1">1</option>
+                        </select>
+                      </span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock"><textarea name="produ_comment" id="" maxlength="100" style="width: 99%; height: 200px; max-height: 200px; min-height: 200px; border-style: none;" placeholder="Máximo de 100 caracteres"></textarea></span>
+                    </div>
+                  </div>
+                  <div class="miniDivider">
+                    &nbsp;
+                  </div>
+                  <div class="divider" style="height: 40px;display: grid; grid-template-columns: 70% 10% 20%;">
+                    <div class="tableBlock">
+                      <span class="textBlock">Resultado / Pontuação</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock" id="sum">&nbsp;</span> <!-- Aqui vai o valor do somatorioo -->
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock">Pontos</span>
+                    </div>
+                  </div>
+                  <div class="miniDivider">
+                    &nbsp;
+                  </div>
+                  <div class="divider">Classificação do Colaborador</div>
+                  <div style="display: grid; grid-template-columns: 80% 20%;">
+                    <div class="tableBlock" style="display: grid; grid-template-columns: 50% 50%;">
+                      <div class="textBlock" style="text-align: left;">
+                        <div style=" width: fit-content; justify-self: end; position: relative; left: 100%; transform: translateX(-105%);">
+                          <span><b>A:</b> Excelente<br><b>B:</b> Muito Satisfatório<br><b>C:</b> Satisfatório<br><b>D:</b> Insatisfatório</span>
+                        </div>
+                      </div>
+                      <span class="textBlock" style="text-align: left;">17 a 20 Pontos<br>14 a 16 Pontos<br>10 a 13 Pontos<br>4 a 9 Pontos</span>
+                    </div>
+                    <div class="tableBlock">
+                      <span class="textBlock classification">&nbsp;</span> <!-- Aqui vai o valor da classificação -->
+                    </div>
+                  </div>
+                  <div class="divider"> <!-- Aqui script -->
+                    &nbsp;
+                    <script>
+                      window.onload = function() {
+                          var selects = document.querySelectorAll('select');
+                          var textBlock = document.querySelector('.classification');
+                          var sum = 6;
+                  
+                          selects.forEach(function(select) {
+                              select.addEventListener('change', function() {
+                                  sum = 6;
+                  
+                                  selects.forEach(function(select) {
+                                      sum += Number(select.value);
+                                  });
+                  
+                                  document.getElementById('sum').textContent = sum;
+                  
+                                  if (sum >= 17 && sum <= 20) {
+                                      textBlock.textContent = 'A';
+                                  } else if (sum >= 14 && sum <= 16) {
+                                      textBlock.textContent = 'B';
+                                  } else if (sum >= 10 && sum <= 13) {
+                                      textBlock.textContent = 'C';
+                                  } else if (sum >= 4 && sum <= 9) {
+                                      textBlock.textContent = 'D';
+                                  }
+                              });
+                          });
+                      };
+                      </script>
+                  </div> <!-- fim script -->
+                  <div class="tableBlock" style="height: 50px;">
+                    <strong class="textBlock" style="text-decoration: underline;">Comentários Finais:</strong>
+                  </div>
+                  <div class="tableBlock" style="height: 210px;">
+                    <span class="textBlock"><textarea name="geral_comment" id="" maxlength="300" style="width: 99%; height: 200px; max-height: 200px; min-height: 200px; border-style: none;" placeholder="Máximo de 300 caracteres"></textarea></span>
+                  </div>
+                </div>
+                <div class="card" style="color: black;">
+                  <div style="display: grid; grid-template-columns: 50% 50%; padding-top: 25px; padding-bottom: 10px;">
+                    <div>
+                      <label for="colabSign">Assinatura Digital do Colaborador:</label> <input type="password" name="colabSign" id="" required>
+                    </div>
+                    <div>
+                      <label for="evalSign">Assinatura Digital do Avaliador:</label> <input type="password" name="evalSign" required><br>
+                    </div>
+                  </div>
+                  <label for="date">Data: </label><input type="date" name="date" id="date" required>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                      let today = new Date().toISOString().substr(0, 10);
+                      let dateInput = document.querySelector("#date");
+                      dateInput.value = today;
+                      dateInput.min = today;
+                    });
+                    </script>
+                <input name="id_event" value="{{event.id_event}}" type="hidden">
+                <input type="submit" value="Encerrar Avaliação">
+              </div>
+              </form>
+            </div>
+			    </div>
+		    </div>
+		  </div>
+      {% include "includes/footer.html" %}
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+  <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+{% endblock javascripts %}
