@@ -20,7 +20,9 @@ Until:&nbsp;&nbsp;2024-05-16&nbsp;&nbsp;&nbsp;12:00
 
 Our team achieved 2nd place.
 
-<img src="subject/second.jpg" alt="Minha Foto" width="250"/>
+| ![Image 1](subject/second.jpg) | ![Image 2](subject/cartao.jpg) |
+|:---:|:---:|
+
 
 To see our presentation please visit:
 
